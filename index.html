@@ -16,12 +16,22 @@
 </head>
 
 <body>
-
-    <audio class="song" loop autoplay>
-        <source src="./music/hbd.mpeg">
-        </source>
-        Your browser isn't invited for super fun audio time.
-    </audio>
+  <audio id="bg-music" loop playsinline>
+    <source src="./music/hbd.mp3" type="audio/mpeg" />
+    你嘅瀏覽器唔支援 Audio。
+  </audio>
+  <button id="play-btn">▶ 播生日歌</button>
+  
+  <script>
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('play-btn');
+    btn.addEventListener('click', () => {
+      audio.play();
+      btn.style.display = 'none';
+    });
+  // 兼顧第一次觸控就播
+    document.addEventListener('touchstart', () => audio.play().catch(()=>{}), { once: true });
+  </script>
 
     <div class="container">
         <div class="one">
